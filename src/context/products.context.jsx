@@ -10,15 +10,19 @@ export const ProductsProvider = ({children}) => {
     const [ products, setProducts] = useState('');
     const getData = async () => {
     const { data } = await axios.get(`https://api.pujakaitem.com/api/products`);
-    setProducts(data);
+
+    
+      setProducts(data);
+    
+    
   };
   useEffect(() => {
     getData();
   }, []);
 
-  console.log(products);
+ 
 
-  
+
 
 
 

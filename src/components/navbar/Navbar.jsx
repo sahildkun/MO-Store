@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className='flex flex-auto justify-end space-x-10'>
     <NavLink to={'/products'}>Products</NavLink>
     <h1>CART</h1>
-    <h1>SIGN IN</h1>
+    <NavLink to={'/sign-in'}>Sign In</NavLink>
     </div>
 
   </div>
