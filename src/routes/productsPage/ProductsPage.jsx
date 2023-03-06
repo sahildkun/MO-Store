@@ -12,15 +12,11 @@ const Products = () => {
     useEffect(() => {
       console.log(products)
     }, [products])
-    
-    if(products === null) {
 
-      console.log("pls check your internet")
-    }
     if(products=== '') {
       return(  
         <>
-        <Navbar/>
+        
         <h1>Loading...</h1>
         </>
       )
