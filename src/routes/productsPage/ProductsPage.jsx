@@ -32,7 +32,7 @@ const Products = () => {
       <input type="search" className='border-white bg-transparent border-[2px]  w-96 p-5 rounded-full font-bold' placeholder="Search Your Products here" onChange={(event) => setSearchfield( event.target.value.toLowerCase()) } />
       </div>
 
-        <div className="grid grid-rows-6 md:grid-rows-none md:grid-cols-3 gap-y-3">
+        <div className="grid grid-rows-6  md:grid-rows-none md:grid-cols-3 gap-y-3">
       {
 
           filteredProducts.length > 0 ? (filteredProducts.map((product) => {

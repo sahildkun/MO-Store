@@ -14,7 +14,7 @@ const Card = ({name, description,price,img , id}) => {
 
 
   return (
-    <div className='m-10 mx-auto max-w-sm  shadow-2xl'>
+    <div className='m-10  flex flex-auto  justify-center max-w-sm  shadow-2xl'>
 
   <div className="max-w-[18rem] md:max-w-sm rounded-lg m-0 shadow-lg bg-gray-700">
   <NavLink to={`/products/${id}`}>
