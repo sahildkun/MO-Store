@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Raleway:wght@400&family=Source+Code+Pro:wght@200&display=swap');
+
+#rel {
+    font-family: 'Raleway', sans-serif;
+}
+#des {
+    font-family: 'Source Code Pro', monospace;
+}
+#company {
+    font-family: 'Oswald', sans-serif;
+}
+

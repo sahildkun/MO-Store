@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useState,useEffect } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export const  ProductsContext = createContext();
 
@@ -8,18 +8,27 @@ export const  ProductsContext = createContext();
 
 export const ProductsProvider = ({children}) => {
     const [ products, setProducts] = useState('');
-    const getData = async () => {
-    const { data } = await axios.get(`https://api.pujakaitem.com/api/products`);
+    const[ isLoading, setIsLoading] = useState(false);
+    const [error , setError ] = useState(null);
 
     
-      setProducts(data);
-    
-    
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+      const getData = async () => {
 
+        try{
+          setIsLoading(true);
+          const { data } = await axios.get(`https://api.pujakaitem.com/api/products`);
+          setProducts(data);
+          setIsLoading(false);
+         }
+    catch (err) {
+     alert(err.message)
+    }
+  }
+;
+
+useEffect(() => {
+  getData();
+}, [])
  
 
 
@@ -28,6 +37,6 @@ export const ProductsProvider = ({children}) => {
 
 
     return (  
-        <ProductsContext.Provider value={[ products, setProducts]}>{children}</ProductsContext.Provider>
+        <ProductsContext.Provider value={[ products, setProducts  ]}>{children}</ProductsContext.Provider>
     )
 }

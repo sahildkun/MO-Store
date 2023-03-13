@@ -1,19 +1,21 @@
-import React from 'react'
+import React from 'react';
 import { useState,useEffect,useContext } from 'react';
-import axios from 'axios';
+
 import Card from '../../components/productCard/product-card';
 import { ProductsContext } from '../../context/products.context';
-import Navbar from '../../components/navbar/Navbar';
 
 
 const Products = () => {
     const [products, setProducts] = useContext(ProductsContext);
-    const [searchfield , setSearchfield] = useState("");
+      // const isLoading = useContext(ProductsContext);
+      // console.log(isLoading);
+     const [searchfield , setSearchfield] = useState("");
     useEffect(() => {
-      console.log(products)
+      // console.log(products)
     }, [products])
-
-    if(products=== '') {
+    
+    
+    if(products=== '' ) {
       return(  
         <>
         
@@ -21,6 +23,8 @@ const Products = () => {
         </>
       )
     }
+
+   
 
     const filteredProducts = products.filter((product) => (product.name.toLocaleLowerCase().includes(searchfield)));
 
@@ -57,4 +61,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default React.memo(Products)

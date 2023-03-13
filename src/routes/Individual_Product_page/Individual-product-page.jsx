@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom'
 import { useContext } from 'react';
 import { ProductsContext } from '../../context/products.context';
 import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
-
+import AButton from '../../components/Button/Button';
+import CategoryButton from '../../components/Button/CategoryButton';
 
 
 const IndividualProduct = () => {
@@ -23,8 +24,8 @@ const IndividualProduct = () => {
           <h1>Loading...</h1>
           </>
         )
-      }
-
+    }
+    
     const individualProduct = products.find((product) => product.id === id);
     
 
@@ -35,7 +36,7 @@ const IndividualProduct = () => {
    
 
    
-    const {image,name,description,category,colors,rating , shipping} = individualProduct;
+    const {image,name,description,category,colors,company , shipping} = individualProduct;
     
     let colour = colors[0];
     console.log(colour);
@@ -43,12 +44,19 @@ const IndividualProduct = () => {
   return (
     <>
       <div className='grid grid-cols-2 m-14 gap-x-10 '>
-        
+     <div className='relative'>
      <img src={image} alt="img" className='h-auto w-auto rounded-lg'/>
-     <div className=' flex flex-col '>
-      <h1 className='text-5xl text-center'>{name.toUpperCase()}</h1>
-      <p className='text-slate-500 m-5'>{description}</p> 
-      <p className='m-5'>category: {category.toUpperCase()}</p>
+     <CategoryButton>{category}</CategoryButton>
+     </div>
+     <div className=' flex flex-col space-y-5'>
+      <h1 className='text-5xl text-center' id='rel'>{name.toUpperCase()}</h1>
+      
+      <p className='text-slate-500 m-5 font-light'>{description}</p> 
+      {/* <button className='mx-5 bg-green-400 w-[5rem] text-center font-bold py-1 rounded-sm' id='company'>{category.toUpperCase()}</button> */}
+      
+      <div className='grid grid-cols-2'>
+      <p className='mx-5 font-bold text-lg' id='company'>{company.toUpperCase()}</p> <p className='mx-5 font-light'>Brand warranty for 1 year(T&C)</p>
+      </div>
       {
         shipping ? <div className='mx-5 my-2'><LocalShippingTwoToneIcon fontSize='large' color='success'/> </div>:<div className='mx-5 my-2 '><LocalShippingTwoToneIcon fontSize='large' color='error'/>(*not shipping)</div>
       }
@@ -61,6 +69,10 @@ const IndividualProduct = () => {
             </button>
           )
         })}
+      </div>
+      <div className='mx-5 font-bold space-x-5' id='rel' >
+      <AButton background='bg-transparent' hoverBackground='hover:bg-white '>Add to Cart</AButton>
+      <AButton background='bg-transparent' hoverBackground='hover:bg-yellow-500 '>BUY NOW</AButton>
       </div>
 
      </div>
