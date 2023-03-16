@@ -3,7 +3,7 @@ import { useState,useEffect,useContext } from 'react';
 
 import Card from '../../components/productCard/product-card';
 import { ProductsContext } from '../../context/products.context';
-
+import Sidebar from '../../components/sideBar/Sidebar';
 
 const Products = () => {
     const [products, setProducts] = useContext(ProductsContext);
@@ -31,7 +31,12 @@ const Products = () => {
 
  
   return (
+    <>
+    <div className="flex flex-col items-center justify-center  ">
+      <Sidebar />
+    </div>
     <div>
+      
       <div className="flex flex-row justify-center py-10">
       <input type="search" className='border-white bg-transparent border-[2px]  w-96 p-5 rounded-full font-bold' placeholder="Search Your Products here" onChange={(event) => setSearchfield( event.target.value.toLowerCase()) } />
       </div>
@@ -58,6 +63,7 @@ const Products = () => {
       }
       </div>
     </div>
+    </>
   )
 }
 

@@ -9,7 +9,7 @@ import Products from './routes/productsPage/ProductsPage'
 import Home from './routes/home/Home'
 import IndividualProduct from './routes/Individual_Product_page/Individual-product-page'
 import UserSignUp from './routes/sign-in/User-sign-up'
-
+import Sidebar from './components/sideBar/Sidebar'
 
 function App() {
   
@@ -18,6 +18,7 @@ function App() {
 
      <>
      <Navbar/>
+     
      <Routes>
      <Route path='/' element={<Home/>}/>
      <Route path='/products' element={<Products/>} />

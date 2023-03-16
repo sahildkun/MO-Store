@@ -5,7 +5,7 @@ import { ProductsContext } from '../../context/products.context';
 import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
 import AButton from '../../components/Button/Button';
 import CategoryButton from '../../components/Button/CategoryButton';
-
+import Sidebar from '../../components/sideBar/Sidebar';
 
 const IndividualProduct = () => {
     
@@ -43,6 +43,9 @@ const IndividualProduct = () => {
 
   return (
     <>
+    <div className="flex flex-col items-center justify-center  ">
+      <Sidebar />
+    </div>
       <div className='grid grid-cols-2 m-14 gap-x-10 '>
      <div className='relative'>
      <img src={image} alt="img" className='h-auto w-auto rounded-lg'/>
