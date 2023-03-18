@@ -64,7 +64,7 @@ export default function UserSignUp() {
    <>
    <div className=' bg-white my-[10vh] shadow-2xl mx-auto max-w-sm  p-10 text-black rounded-lg '>
     <h1 className=' text-center text-3xl mb-10' id='rel'>SIGN IN</h1>
-    <form action="" className='flex flex-col space-y-10 justify-center' onSubmit={submitHandler}>
+    <form action="" className='flex flex-col space-y-6 justify-center' onSubmit={submitHandler}>
         
         <div className='flex flex-col space-y-2 '>
          <label htmlFor="name" className='text-xl font-semibold' id='company'>Name</label>
