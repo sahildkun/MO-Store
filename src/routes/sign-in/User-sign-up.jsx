@@ -98,7 +98,7 @@ export default function UserSignUp() {
          <div className=' mx-auto'>
          <button 
          type='submit' 
-         disabled={!formIsValid}
+         
          className='text-white font-semibold disabled:bg-gray-400 border-2 border-slate-900 py-2 px-3 rounded-full w-[250px]  bg-slate-900 hover:text-white cursor-pointer disabled:cursor-not-allowed  disabled:text-black' 
          id='rel' 
          >SIGN IN </button>
