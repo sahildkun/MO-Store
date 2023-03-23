@@ -1,9 +1,12 @@
+import { fontWeight } from '@mui/system';
 import React from 'react'
-import { useState } from 'react';
 import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { CartContext } from '../../context/cart.context';
-const Sidebar = () => {
+
+const Sidebar = (props) => {
   const {showSidebar,setShowSidebar} = useContext(CartContext);
+  const cart = useSelector((state) => state.cart.cart)
 
   return (
     
@@ -26,7 +29,25 @@ id='rel'
     showSidebar ? "translate-x-0 " : "translate-x-full"
   }`}
 >
-  <h3 className="mt-20 text-4xl font-semibold text-black">I am a sidebar</h3>
+ <text classname=' 'style={{
+  color: 'black',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  fontSize: 50
+ }} >CART</text>
+ <h1>{cart.length !== 0 ?  cart.map(item => {
+  return (
+    <div key={item.id}>
+    <h2>{item.name}</h2>
+    </div>
+  )
+ })
+:
+<h1>
+the cart is empty
+</h1>
+
+}</h1>
 </div>
 </>
   )
