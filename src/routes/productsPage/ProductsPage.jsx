@@ -3,8 +3,7 @@ import { useState,useEffect,useContext } from 'react';
 
 import Card from '../../components/productCard/product-card';
 import { ProductsContext } from '../../context/products.context';
-import Sidebar from '../../components/sideBar/Sidebar';
-
+import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
 const Products = () => {
     const [products, setProducts] = useContext(ProductsContext);
       // const isLoading = useContext(ProductsContext);
@@ -32,9 +31,7 @@ const Products = () => {
  
   return (
     <>
-    <div className="flex flex-col items-center justify-center  ">
-      <Sidebar />
-    </div>
+    <SidebarDisplay/>
     <div>
       
       <div className="flex flex-row justify-center py-10">

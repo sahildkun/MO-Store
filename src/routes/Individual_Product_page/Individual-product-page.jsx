@@ -7,13 +7,14 @@ import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
 import AButton from '../../components/UI/Button/Button';
 import CategoryButton from '../../components/UI/Button/CategoryButton';
 import Sidebar from '../../components/sideBar/Sidebar';
+import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cartFeatures/cartSlice';
 import { Toaster, toast } from 'sonner'
 
 const IndividualProduct = () => {
     const dispatch = useDispatch();
-    const  {setShowSidebar}   = useContext(CartContext); 
+    const  {showSidebar,setShowSidebar}   = useContext(CartContext); 
      const [products,setProducts] = useContext(ProductsContext);
     const { id } = useParams();
    
@@ -49,13 +50,11 @@ const IndividualProduct = () => {
   return (
     <>
     <Toaster position="bottom-left"/>
-    <div className="flex flex-col items-center justify-center  ">
-      <Sidebar />
-    </div>
+    <SidebarDisplay/>
       <div className='grid grid-cols-2 m-14 gap-x-10 '>
-     <div className='relative'>
+     <div className=''>
      <img src={image} alt="img" className='h-auto w-auto rounded-lg'/>
-     <CategoryButton>{category}</CategoryButton>
+     {/* <CategoryButton>{category}</CategoryButton> */}
      </div>
      <div className=' flex flex-col space-y-5'>
       <h1 className='text-5xl text-center' id='rel'>{name.toUpperCase()}</h1>
