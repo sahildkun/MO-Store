@@ -1,5 +1,6 @@
 import { fontWeight } from '@mui/system';
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRef } from 'react';
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { CartContext } from '../../context/cart.context';
@@ -7,10 +8,24 @@ import CartList from '../Cart_List/Cart_List';
 const Sidebar = (props) => {
   const {showSidebar,setShowSidebar} = useContext(CartContext);
   const cart = useSelector((state) => state.cart.cart)
+  let sidebarRef = useRef();
 
+  useEffect(() => {
+    let handler = (event) => {
+      if(!sidebarRef.current.contains(event.target)){
+        setShowSidebar(false);
+      }
+    }
+
+    document.addEventListener('mousedown',handler);
+
+    return () => {
+      document.removeEventListener('mousedown',handler);
+    }
+  })
   return (
     
-<>
+<div ref={sidebarRef}>
   
   {showSidebar ? (
     <button
@@ -26,7 +41,7 @@ const Sidebar = (props) => {
 
 <div
 id='rel'
-  className={`top-0 right-0 w-[35vw] bg-white p-10  text-black fixed h-full z-40 overflow-auto ease-in-out duration-300 ${
+  className={`top-0 right-0 w-[35vw] bg-white p-10  text-black fixed h-full z-40 overflow-scroll  ease-in-out duration-300 ${
     showSidebar ? "translate-x-0  " : "translate-x-full "
   }`}
 >
@@ -42,7 +57,7 @@ Your cart is empty
 </h1>
 </div>
 
-</>
+</div>
   )
 }
 

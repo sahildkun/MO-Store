@@ -48,7 +48,7 @@ const IndividualProduct = () => {
     console.log(colour);
 
   return (
-    <>
+    <div className=''>
     <Toaster position="bottom-left"/>
    
     { showSidebar && <SidebarDisplay /> }
@@ -67,7 +67,7 @@ const IndividualProduct = () => {
       <p className='mx-5 font-bold text-lg' id='company'>{company.toUpperCase()}</p> <p className='mx-5 font-light'>Brand warranty for 1 year(T&C)</p>
       </div>
       {
-        shipping ? <div className='mx-5 my-2'><LocalShippingTwoToneIcon fontSize='large' color='success'/> </div>:<div className='mx-5 my-2 '><LocalShippingTwoToneIcon fontSize='large' color='error'/>(*not shipping)</div>
+        shipping ? <div className='mx-5'><LocalShippingTwoToneIcon fontSize='large' color='success'/> </div>:<div className='mx-5 my-2 '><LocalShippingTwoToneIcon fontSize='large' color='error'/>(*not shipping)</div>
       }
       <div >
         {colors.map((currColor, key) => {
@@ -95,14 +95,12 @@ const IndividualProduct = () => {
       }}>Add to Cart</AButton>
       <AButton background='bg-transparent' hoverBackground='hover:bg-yellow-500 '>BUY NOW</AButton>
       </div>
-      <NavLink className={'text-xl text-gray-500 ml-5 hover:text-white'} to={'/products'}>
-        view  more products...
-      </NavLink>
+    
      </div>
 
  
       </div> 
-    </>
+    </div>
   )
 }
 
