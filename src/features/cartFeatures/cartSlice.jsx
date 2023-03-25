@@ -23,6 +23,8 @@ const cartSlice = createSlice({
       const item = state.cart.find((item) => item.id === action.payload);
       if (item.quantity === 1) {
         item.quantity = 1
+        const removeItem = state.cart.filter((item) => item.id !== action.payload);
+        state.cart = removeItem;
       } else {
         item.quantity--;
       }

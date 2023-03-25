@@ -11,7 +11,7 @@ import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cartFeatures/cartSlice';
 import { Toaster, toast } from 'sonner'
-
+import { NavLink } from 'react-router-dom';
 const IndividualProduct = () => {
     const dispatch = useDispatch();
     const  {showSidebar,setShowSidebar}   = useContext(CartContext); 
@@ -50,7 +50,8 @@ const IndividualProduct = () => {
   return (
     <>
     <Toaster position="bottom-left"/>
-    <SidebarDisplay/>
+   
+    { showSidebar && <SidebarDisplay /> }
       <div className='grid grid-cols-2 m-14 gap-x-10 '>
      <div className=''>
      <img src={image} alt="img" className='h-auto w-auto rounded-lg'/>
@@ -94,10 +95,12 @@ const IndividualProduct = () => {
       }}>Add to Cart</AButton>
       <AButton background='bg-transparent' hoverBackground='hover:bg-yellow-500 '>BUY NOW</AButton>
       </div>
-
+      <NavLink className={'text-xl text-gray-500 ml-5 hover:text-white'} to={'/products'}>
+        view  more products...
+      </NavLink>
      </div>
 
-        
+ 
       </div> 
     </>
   )

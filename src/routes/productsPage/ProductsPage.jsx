@@ -4,9 +4,11 @@ import { useState,useEffect,useContext } from 'react';
 import Card from '../../components/productCard/product-card';
 import { ProductsContext } from '../../context/products.context';
 import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
+import { CartContext } from '../../context/cart.context';
 const Products = () => {
     const [products, setProducts] = useContext(ProductsContext);
-      // const isLoading = useContext(ProductsContext);
+    const {showSidebar} = useContext(CartContext) 
+    // const isLoading = useContext(ProductsContext);
       // console.log(isLoading);
      const [searchfield , setSearchfield] = useState("");
     useEffect(() => {
@@ -31,7 +33,7 @@ const Products = () => {
  
   return (
     <>
-    <SidebarDisplay/>
+   { showSidebar && <SidebarDisplay/>}
     <div>
       
       <div className="flex flex-row justify-center py-10">
