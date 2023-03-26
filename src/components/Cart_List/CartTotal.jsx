@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-const getTotal= () => {
+export const getTotal= () => {
 
-    const cart = useSelector(state => state.cart.cart);
+    const cart = useSelector(state => state.cart);
     console.log(cart);
     let totalQuantity = 0
     let totalPrice = 0

@@ -10,7 +10,7 @@ import CartTotal from '../Cart_List/CartTotal';
 import CartList from '../Cart_List/Cart_List';
 const Sidebar = (props) => {
   const {showSidebar,setShowSidebar} = useContext(CartContext);
-  const cart = useSelector((state) => state.cart.cart)
+  const cart = useSelector((state) => state.cart)
   let sidebarRef = useRef();
 
   useEffect(() => {
