@@ -3,7 +3,10 @@ import React, { useEffect } from 'react'
 import { useRef } from 'react';
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { CartContext } from '../../context/cart.context';
+import CartTotal from '../Cart_List/CartTotal';
+
 import CartList from '../Cart_List/Cart_List';
 const Sidebar = (props) => {
   const {showSidebar,setShowSidebar} = useContext(CartContext);
@@ -47,11 +50,30 @@ id='rel'
 >
 
  <h1 className=' text-7xl text-left  font-bold mb-10 ' >CART</h1>
- <h1>{cart.length !== 0 ?  cart.map(item => <CartList key={item.id} item={item} />)
+ <h1>{cart.length !== 0 ? <>{cart.map(item => 
+
+ <CartList 
+  key={item.id}
+  id={item.id} 
+  name={item.name}
+  image={item.image}
+  price={item.price}
+  quantity={item.quantity}
+  />
+ )}
+ <CartTotal/>
+ </> 
+
+
 :
+
+<div className='flex flex-col'>
 <h1>
 Your cart is empty 
 </h1>
+<NavLink to={'/products'} onClick={() => {setShowSidebar(false)}} className='text-3xl bg-black text-white my-44 mx-auto p-3'>View Products</NavLink>
+
+</div>
 
 }
 </h1>
