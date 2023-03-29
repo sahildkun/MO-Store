@@ -11,6 +11,7 @@ import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cartFeatures/cartSlice';
 import { Toaster, toast } from 'sonner'
+import NotFound from '../404_error/NotFound';
 import { NavLink } from 'react-router-dom';
 const IndividualProduct = () => {
     const dispatch = useDispatch();
@@ -34,7 +35,14 @@ const IndividualProduct = () => {
     
     const individualProduct = products.find((product) => product.id === id);
     
+    if(individualProduct === undefined) {
 
+      return (  
+        <>
+        <NotFound/>
+        </>
+      )
+    }
 
 
    

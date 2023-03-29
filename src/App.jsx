@@ -10,6 +10,7 @@ import Home from './routes/home/Home'
 import IndividualProduct from './routes/Individual_Product_page/Individual-product-page'
 import UserSignUp from './routes/sign-in/User-sign-up'
 import Sidebar from './components/sideBar/Sidebar'
+import NotFound from './routes/404_error/NotFound'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
      <Route path='/products' element={<Products/>} />
      <Route path='/products/:id' element={<IndividualProduct/>} />
      <Route path='/sign-in'  element={<UserSignUp/>}/>
+     <Route path='*' element={<NotFound/>}/>
     
      <Route  />
 
