@@ -5,6 +5,7 @@ import Card from '../../components/productCard/product-card';
 import { ProductsContext } from '../../context/products.context';
 import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
 import { CartContext } from '../../context/cart.context';
+import Sidebar from '../../components/sideBar/Sidebar';
 const Products = () => {
     const [products, setProducts] = useContext(ProductsContext);
     const {showSidebar} = useContext(CartContext) 
@@ -33,7 +34,10 @@ const Products = () => {
  
   return (
     <>
-   { showSidebar && <SidebarDisplay/>}
+   {/* { showSidebar && <SidebarDisplay/>} */}
+   <div  className={`${showSidebar ? 'fixed inset-0 bg-black bg-opacity-50  ' : ''} `} >
+   <Sidebar/>
+   </div>
     <div>
       
       <div className="flex flex-row justify-center py-10">

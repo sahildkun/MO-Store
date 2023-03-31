@@ -8,11 +8,12 @@ const SidebarDisplay = (props) => {
   
   
     return (
-    <>
-    <div  className={`fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm `} >
+    <div  className={`fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm  ease-in-out duration-300 ${
+      showSidebar ? "translate-x-0" : "translate-x-full "
+    }`} >
       <Sidebar />
     </div>
-    </>
+   
   )
 }
 

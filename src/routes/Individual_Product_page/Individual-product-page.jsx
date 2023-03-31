@@ -59,7 +59,9 @@ const IndividualProduct = () => {
     <div className=''>
     <Toaster position="bottom-left"/>
    
-    { showSidebar && <SidebarDisplay /> }
+    <div  className={`${showSidebar ? 'fixed inset-0 bg-black bg-opacity-50' : ''} `} >
+   <Sidebar/>
+   </div>
       <div className='grid grid-cols-2 m-14 gap-x-10 '>
      <div className=''>
      <img src={image} alt="img" className='h-auto w-auto rounded-lg'/>

@@ -1,11 +1,16 @@
 import React from 'react'
+import { CartContext } from '../../context/cart.context'
+import { useContext } from 'react'
 import Sidebar from '../../components/sideBar/Sidebar'
+import SidebarDisplay from '../../components/sideBar/Sidebardisplay'
+ 
 const Home = () => {
+  const {showSidebar ,setShowSidebar} = useContext(CartContext)
   return (
     <>
-    <div className="flex flex-col items-center justify-center  ">
-      <Sidebar />
-    </div>
+
+    <Sidebar/>
+   
     <div>Home
      
     </div>
