@@ -76,7 +76,7 @@ export default function UserSignUp() {
          type="email" 
          placeholder='Please enter your email address' 
          name='email' 
-         className={`bg-gray-800 w-auto border-2 text-white  p-2 rounded-md ${!emailInputInValid ? 'border-slate-500 bg-white' : 'border-red-700 '}`}
+         className={`bg-gray-800 w-auto border-2 text-white  p-2 rounded-md ${!emailInputInValid ? 'border-slate-500 ' : 'border-red-700 '}`}
          
          onChange={addEmailhandler}
          onBlur={emailInputBlurhandler}
@@ -91,7 +91,7 @@ export default function UserSignUp() {
          <input 
          type="password" 
          placeholder='Please enter your name' 
-         className={`bg-gray-800 w-auto border-2   text-white  p-2 rounded-md ${!nameInputInValid ? 'border-slate-500 bg-white' : 'border-red-700 '}`}
+         className={`bg-gray-800 w-auto border-2   text-white  p-2 rounded-md ${!nameInputInValid ? 'border-slate-500 ' : 'border-red-700 '}`}
             
          onChange={addUsernameHandler}
          onBlur={nameInputBlurhandler}
