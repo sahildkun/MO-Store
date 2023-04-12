@@ -7,20 +7,20 @@ import { CartProvider } from './context/cart.context'
 import { ProductsProvider } from './context/products.context'
 import { Provider } from 'react-redux'
 import {store} from '../src/store/store'
-
+import AppNew from './App_2'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     
-    <BrowserRouter>
+    
     <ProductsProvider>
       <Provider store={store}>
       <CartProvider>
-        <App />
+        <AppNew />
        </CartProvider>
        </Provider>
     </ProductsProvider>
-    </BrowserRouter>
+   
   </React.StrictMode>,
 )

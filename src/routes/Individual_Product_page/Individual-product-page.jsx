@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLoaderData, useParams } from 'react-router-dom'
 import { useContext } from 'react';
 import { ProductsContext } from '../../context/products.context';
 import { CartContext } from '../../context/cart.context';
@@ -16,44 +16,47 @@ import { NavLink } from 'react-router-dom';
 const IndividualProduct = () => {
     const dispatch = useDispatch();
     const  {showSidebar,setShowSidebar}   = useContext(CartContext); 
-     const [products,setProducts] = useContext(ProductsContext);
-    const { id } = useParams();
+  //    const [products,setProducts] = useContext(ProductsContext);
+  //   const { id } = useParams();
    
-   console.log(id);
-    useEffect(() => {
+  //  console.log(id);
+  //   useEffect(() => {
        
-    },[products]);
+  //   },[products]);
     
-    if(products[0] === undefined || products === ' ') {
-        return(  
-          <>
+  //   if(products[0] === undefined || products === ' ') {
+  //       return(  
+  //         <>
        
-          <h1>Loading...</h1>
-          </>
-        )
-    }
+  //         <h1>Loading...</h1>
+  //         </>
+  //       )
+  //   }
     
-    const individualProduct = products.find((product) => product.id === id);
+  //   const individualProduct = products.find((product) => product.id === id);
     
-    if(individualProduct === undefined) {
+  //   if(individualProduct === undefined) {
 
-      return (  
-        <>
-        <NotFound/>
-        </>
-      )
-    }
+  //     return (  
+  //       <>
+  //       <NotFound/>
+  //       </>
+  //     )
+  //   }
 
-
+   const data = useLoaderData();
+   const individualProduct = data;
+   console.log(individualProduct);
    
 
    
 
    
-    const {image,name,description,category,colors,company, price, shipping} = individualProduct;
-  
+    const {id,image,name,description,stock,category,colors,company, price, shipping} = individualProduct;
+    const img = image[0].url;
+    console.log(img)
     let colour = colors[0];
-    console.log(colour);
+    // console.log(image[2]);
 
   return (
     <div className=''>
@@ -64,7 +67,7 @@ const IndividualProduct = () => {
    </div>
       <div className='grid grid-cols-2 m-14 gap-x-10 '>
      <div className=''>
-     <img src={image} alt="img" className='h-auto w-auto rounded-lg'/>
+     <img src={img} alt="img" className='h-auto w-auto rounded-lg'/>
      {/* <CategoryButton>{category}</CategoryButton> */}
      </div>
      <div className=' flex flex-col space-y-5'>
@@ -92,7 +95,7 @@ const IndividualProduct = () => {
       <div className='mx-5 font-bold space-x-5' id='rel' >
       <AButton  background='bg-transparent' hoverBackground='hover:bg-white ' onClick={() => {
        dispatch(addToCart({
-          id,name,price,image
+          id,name,price,img
         }),
         toast.success('Added to cart', {
           action: {
@@ -115,3 +118,19 @@ const IndividualProduct = () => {
 }
 
 export default IndividualProduct
+
+export const loader = async ({request,params}) => {
+ const id = params.id;
+
+ const response = await  fetch('https://api.pujakaitem.com/api/products/' + id );
+ if(!response.ok) {
+  throw json({message: 'Could not load data for this event'} , {
+    status: 500,
+  })
+}
+else{
+  return response 
+
+}
+
+}

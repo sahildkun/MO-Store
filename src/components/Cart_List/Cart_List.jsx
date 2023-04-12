@@ -4,11 +4,11 @@ import { incrementQuantity,decrementQuantity,removeItem} from '../../features/ca
 
 const CartList = ({id,name,image,price,quantity}) => {
     const dispatch = useDispatch();
-   
+ 
     return (
     <>
     <div key={id} className='flex flex-row justify-between border-2 my-10'>
-    <img src={image} className='h-auto w-32' alt="" />
+    <img src={image} className='h-auto w-32' alt="img" />
 
     <div className='flex flex-col p-1  w-full'>
     <h2 className='text-xl font-bold'>{name}</h2>

@@ -11,6 +11,7 @@ import CartList from '../Cart_List/Cart_List';
 const Sidebar = (props) => {
   const {showSidebar,setShowSidebar} = useContext(CartContext);
   const cart = useSelector((state) => state.cart)
+  console.log(cart)
   let sidebarRef = useRef();
 
   useEffect(() => {
@@ -56,7 +57,7 @@ id='rel'
   key={item.id}
   id={item.id} 
   name={item.name}
-  image={item.image}
+  image={item.img}
   price={item.price}
   quantity={item.quantity}
   />
