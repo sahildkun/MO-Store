@@ -9,20 +9,28 @@ import Sidebar from '../../components/sideBar/Sidebar';
 import { Await, defer, useLoaderData ,useNavigation} from 'react-router-dom';
 const Products = () => {
 
-    const data = useLoaderData();
-    const navigation = useNavigation();
+    // const data = useLoaderData();
+    // const navigation = useNavigation();
 
-     console.log(data);
-    // const [products, setProducts] = useContext(ProductsContext);
-     const products = data;
+    //  console.log(data);
+    const [products, setProducts] = useContext(ProductsContext);
+    //  const products = data;
     const {showSidebar} = useContext(CartContext) 
-    // const isLoading = useContext(ProductsContext);
+    const isLoading = useContext(ProductsContext);
       // console.log(isLoading);
      const [searchfield , setSearchfield] = useState("");
-    // useEffect(() => {
-    //   // console.log(products)
-    // }, [products])
-    
+    useEffect(() => {
+      // console.log(products)
+    }, [products])
+     
+    if(products === '') {
+
+      return (  
+        <>
+        loading...
+        </>
+      )
+    }
     
 
 
@@ -79,11 +87,11 @@ export default React.memo(Products)
 
 export  const loader = async () => {
 
-    const response = await axios.get('https://api.pujakaitem.com/api/products');
+    const response = await fetch('https://api.pujakaitem.com/api/products');
   // const resData = await response.json();
 
   
-    return response.data;
+    return response;
 
 }
 

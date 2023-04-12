@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
+import { signInWithGoogle ,createUserDocumentfromAuth} from '../../utils/firebase';
+
 import google from '../../images/Google__G__Logo.svg.png'
 import img from '../../images/pexels-photo-322207.jpeg'
 export default function UserSignUp() {
@@ -9,7 +11,11 @@ export default function UserSignUp() {
   const [nameTouched , setNameTouched] = useState(false);
   const [emailTouched , setEmailTouched] = useState(false);
  
-  
+   const logGoogleUser = async  () => {
+     const {user} = await  signInWithGoogle();
+    
+     const userDocRef = await createUserDocumentfromAuth(user);
+   }
    const enteredNameisValid = userName.trim() !== '';
    const nameInputInValid = !enteredNameisValid && nameTouched;
    
@@ -109,7 +115,7 @@ export default function UserSignUp() {
          >LOG IN </button>
           <button 
          type='button'
-         
+         onClick={logGoogleUser}
          className='text-white font-semibold flex flex-row items-center justify-center space-x-5  disabled:bg-gray-400 border-2 border-slate-900 py-2 px-3 rounded-full  bg-slate-900 hover:text-white cursor-pointer disabled:cursor-not-allowed  disabled:text-black' 
          id='rel' 
          >
