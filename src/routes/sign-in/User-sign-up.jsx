@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
-import { signInWithGoogle ,createUserDocumentfromAuth} from '../../utils/firebase';
+import { signInWithGoogle ,createUserDocumentfromAuth ,signInAuthUserWithEmailAndPassword} from '../../utils/firebase';
 
 import google from '../../images/Google__G__Logo.svg.png'
 import img from '../../images/pexels-photo-322207.jpeg'
@@ -48,7 +48,7 @@ export default function UserSignUp() {
     setEmailTouched(true);
   }
 
-  const submitHandler =(event) => {
+  const submitHandler = async (event) => {
    event.preventDefault();
 
    setNameTouched(true);
@@ -57,14 +57,34 @@ export default function UserSignUp() {
   
     return; 
    }
+   try {
+    console.log(userEmail, userName);
 
-   console.log(userName);
+    const response = await signInAuthUserWithEmailAndPassword(userEmail,userName)
+    console.log(response);
+    setUserName('');
+    setUserEmail('')
+    setNameTouched(false);
+    setEmailTouched(false);
+
+   }
+   catch(error) {
+   switch (error.code) {
+    case 'auth/wrong-password': 
+      alert('wrong password')
+      break;
+    case 'auth/user-not-found': 
+      alert('invalid user')
+      break;
+    default:
+      console.log(error);
+      break;
+   }
+   }
+  
 
 
-   setUserName('');
-   setUserEmail('')
-   setNameTouched(false);
-   setEmailTouched(false);
+
 
   }
   
