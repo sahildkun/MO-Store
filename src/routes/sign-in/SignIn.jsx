@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
-import { useState } from 'react'
+import { useState,useContext } from 'react'
 import { NavLink } from 'react-router-dom';
 import { signInWithGoogle ,createUserDocumentfromAuth ,signInAuthUserWithEmailAndPassword} from '../../utils/firebase';
-
+import { Toaster, toast } from 'sonner'
+import { useNavigation,Form,useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/users.context';
 import google from '../../images/Google__G__Logo.svg.png'
 import img from '../../images/pexels-photo-322207.jpeg'
 export default function UserSignUp() {
@@ -10,12 +12,18 @@ export default function UserSignUp() {
   const [userEmail , setUserEmail] = useState('');
   const [nameTouched , setNameTouched] = useState(false);
   const [emailTouched , setEmailTouched] = useState(false);
- 
+  const [ loading , setloading]    = useState(false);
+  const {setToaster} = useContext(UserContext)
+   
+  const navigate = useNavigate();
+
    const logGoogleUser = async  () => {
-     const {user} = await  signInWithGoogle();
-    
-     const userDocRef = await createUserDocumentfromAuth(user);
+   await  signInWithGoogle();
+   setToaster(true)
+   navigate('/')
    }
+
+
    const enteredNameisValid = userName.trim() !== '';
    const nameInputInValid = !enteredNameisValid && nameTouched;
    
@@ -50,18 +58,22 @@ export default function UserSignUp() {
 
   const submitHandler = async (event) => {
    event.preventDefault();
-
+   setloading(true);
    setNameTouched(true);
    setEmailTouched(true);
+   
    if( !enteredNameisValid || !enteredEmailisValid) {
-  
+    setloading(false);
     return; 
    }
    try {
     console.log(userEmail, userName);
 
-    const response = await signInAuthUserWithEmailAndPassword(userEmail,userName)
-    console.log(response);
+    await signInAuthUserWithEmailAndPassword(userEmail,userName)
+   
+    setToaster(true);
+    navigate('/')
+    setloading(false);
     setUserName('');
     setUserEmail('')
     setNameTouched(false);
@@ -69,12 +81,13 @@ export default function UserSignUp() {
 
    }
    catch(error) {
+    setloading(false)
    switch (error.code) {
     case 'auth/wrong-password': 
-      alert('wrong password')
+      toast.error('Wrong Password !')
       break;
     case 'auth/user-not-found': 
-      alert('invalid user')
+      toast.error('User not found')
       break;
     default:
       console.log(error);
@@ -89,11 +102,13 @@ export default function UserSignUp() {
   }
   
   return (
+  <>
+   <Toaster richColors theme='dark'  position='top-center'/>
    <div className='grid grid-cols-2'>
    <div className=' bg-black  shadow-2xl  mx-5 p-10 text-white rounded-lg '>
     <h1 className=' text-center text-5xl mb-2 ' >Welcome back</h1>
     <h1 className=' text-center text-xl mb-10 font-extralight' >Please enter your contact details to connect.</h1>
-    <form action="" className='flex flex-col space-y-6 justify-center' onSubmit={submitHandler}>
+    <Form action="" className='flex flex-col space-y-6 justify-center' onSubmit={submitHandler}>
         
         <div className='flex flex-col space-y-2 mx-10 '>
           
@@ -129,10 +144,10 @@ export default function UserSignUp() {
          <div className='flex flex-col space-y-5 mx-auto'>
          <button 
          type='submit' 
-         
+         disabled={loading}
          className='text-white font-semibold  disabled:bg-gray-400 border-2 w-full border-slate-900 py-2 px-3 rounded-full  bg-slate-900 hover:text-white cursor-pointer disabled:cursor-not-allowed  disabled:text-black' 
          id='rel' 
-         >LOG IN </button>
+         >{loading ? 'Logging...' : 'Login'}</button>
           <button 
          type='button'
          onClick={logGoogleUser}
@@ -144,7 +159,7 @@ export default function UserSignUp() {
           </button>
          <p>Don’t have an account ? <NavLink to={'/sign-up'} className={'underline'}>Sign up here</NavLink></p>
          </div>
-    </form>
+    </Form>
    </div>
 
    <div className=''>
@@ -153,5 +168,6 @@ export default function UserSignUp() {
    </div>
    
    </div>
+   </>
   )
 }

@@ -8,9 +8,9 @@ import { Routes ,Route} from 'react-router-dom'
 import Products from './routes/productsPage/ProductsPage'
 import Home from './routes/home/Home'
 import IndividualProduct from './routes/Individual_Product_page/Individual-product-page'
-import UserSignUp from './routes/sign-in/User-sign-up'
+import UserSignUp from './routes/sign-in/SignIn'
 import Sidebar from './components/sideBar/Sidebar'
-import NotFound from './routes/404_error/NotFound'
+
 import SignUp from './routes/sign-up/SignUp'
 
 
@@ -30,7 +30,7 @@ function App() {
      <Route path='/sign-in'  element={<UserSignUp/>}/>
      <Route path='/sign-up'  element={<SignUp/>}/>
    
-     <Route path='*' element={<NotFound/>}/>
+
     
      <Route  />
 

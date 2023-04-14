@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useState,useEffect } from "react";
 import axios, { AxiosError } from "axios";
-
+import { json } from "react-router-dom";
 export const  ProductsContext = createContext();
 
 
@@ -20,8 +20,11 @@ export const ProductsProvider = ({children}) => {
           setProducts(data);
           setIsLoading(false);
          }
-    catch (err) {
-     alert(err.message)
+       catch (err) {
+        setProducts(null);
+      throw json({message: 'Could not load data for this product'} , {
+        status: 500,
+      })
     }
   }
 ;

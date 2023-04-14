@@ -4,15 +4,17 @@ import RootLayout from './layouts/RootLayout'
 import Home from './routes/home/Home'
 import ProductsPage from './routes/productsPage/ProductsPage'
 import IndividualProduct from './routes/Individual_Product_page/Individual-product-page'
-import UserSignUp from './routes/sign-in/User-sign-up'
+import UserSignUp from './routes/sign-in/SignIn'
 import SignUp from './routes/sign-up/SignUp'
 import { loader as productsLoder } from './routes/productsPage/ProductsPage'
 import { loader as individualProductLoader } from './routes/Individual_Product_page/Individual-product-page'
 import ProductPageLayout from './layouts/ProductPageLayout'
+import ErrorPage from './routes/ErrorPage/Error'
 const  router = createBrowserRouter([  
     {
         path:'/',
         element: <RootLayout/>,
+        errorElement: <ErrorPage/>,
         children: [  
             {
               index: true,

@@ -7,6 +7,7 @@ import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
 import { CartContext } from '../../context/cart.context';
 import Sidebar from '../../components/sideBar/Sidebar';
 import { Await, defer, useLoaderData ,useNavigation} from 'react-router-dom';
+import ErrorPage from '../ErrorPage/Error';
 const Products = () => {
 
     // const data = useLoaderData();
@@ -32,6 +33,9 @@ const Products = () => {
       )
     }
     
+    if(products === null) {
+      <ErrorPage/>
+    }
 
 
    

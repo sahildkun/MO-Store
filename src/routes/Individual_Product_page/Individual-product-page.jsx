@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react'
-import { useLoaderData, useParams } from 'react-router-dom'
+import React from 'react'
+import { useLoaderData } from 'react-router-dom'
 import { useContext } from 'react';
-import { ProductsContext } from '../../context/products.context';
 import { CartContext } from '../../context/cart.context';
 import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
 import AButton from '../../components/UI/Button/Button';
-import CategoryButton from '../../components/UI/Button/CategoryButton';
 import Sidebar from '../../components/sideBar/Sidebar';
-import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cartFeatures/cartSlice';
 import { Toaster, toast } from 'sonner'
-import NotFound from '../404_error/NotFound';
-import { NavLink } from 'react-router-dom';
 const IndividualProduct = () => {
     const dispatch = useDispatch();
     const  {showSidebar,setShowSidebar}   = useContext(CartContext); 
@@ -124,7 +119,7 @@ export const loader = async ({request,params}) => {
 
  const response = await  fetch('https://api.pujakaitem.com/api/products/' + id );
  if(!response.ok) {
-  throw json({message: 'Could not load data for this event'} , {
+  throw json({message: 'Could not load data for this product'} , {
     status: 500,
   })
 }

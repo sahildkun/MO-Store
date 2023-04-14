@@ -8,19 +8,21 @@ import { ProductsProvider } from './context/products.context'
 import { Provider } from 'react-redux'
 import {store} from '../src/store/store'
 import AppNew from './App_2'
-
+import { UserProvider } from './context/users.context'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     
     
     <ProductsProvider>
       <Provider store={store}>
+      <UserProvider>
       <CartProvider>
         <AppNew />
        </CartProvider>
+       </UserProvider>
        </Provider>
     </ProductsProvider>
    
-  </React.StrictMode>,
+
 )
