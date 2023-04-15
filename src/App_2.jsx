@@ -10,6 +10,7 @@ import { loader as productsLoder } from './routes/productsPage/ProductsPage'
 import { loader as individualProductLoader } from './routes/Individual_Product_page/Individual-product-page'
 import ProductPageLayout from './layouts/ProductPageLayout'
 import ErrorPage from './routes/ErrorPage/Error'
+import CheckoutPage from './routes/checkout/CheckoutPage'
 const  router = createBrowserRouter([  
     {
         path:'/',
@@ -48,6 +49,10 @@ const  router = createBrowserRouter([
             {
                 path: 'sign-up',
                 element: <SignUp/>
+            },
+            {
+                path: 'checkout',
+                element: <CheckoutPage/>
             }
         ]
         

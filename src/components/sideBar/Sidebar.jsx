@@ -8,10 +8,12 @@ import { CartContext } from '../../context/cart.context';
 import CartTotal from '../Cart_List/CartTotal';
 
 import CartList from '../Cart_List/Cart_List';
+import PaymentForm from '../PaymentForm/PaymentForm';
+import AButton from '../UI/Button/Button';
 const Sidebar = (props) => {
   const {showSidebar,setShowSidebar} = useContext(CartContext);
   const cart = useSelector((state) => state.cart)
-  console.log(cart)
+  // console.log(cart)
   let sidebarRef = useRef();
 
   useEffect(() => {
@@ -63,6 +65,7 @@ id='rel'
   />
  )}
  <CartTotal/>
+ <NavLink to={'/checkout'}><AButton  background='bg-white' hoverBackground='hover:bg-black hover:text-white '>CHECKOUT</AButton></NavLink>
  </> 
 
 

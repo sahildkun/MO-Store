@@ -46,7 +46,7 @@ const Navbar = () => {
  
 
     </h1>}
-   {currentUser ? <NavLink onClick={signOutUser} className={'cursor-pointer'}>Sign Out</NavLink> 
+   {currentUser ? <NavLink onClick={signOutUser} className={'cursor-pointer hover:text-blue-400'}>Sign Out</NavLink> 
    : <NavLink 
     className={({isActive}) => isActive ? 'text-blue-600' : 'hover:text-blue-400'}
     to={'/sign-in'}>Sign In</NavLink>}

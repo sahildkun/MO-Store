@@ -9,12 +9,13 @@ export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [toaster, setToaster] = useState(false);
   const value = { currentUser, setCurrentUser ,toaster ,setToaster};
+  console.log(currentUser);
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
+    const unsubscribe = onAuthStateChangedListener(async (user) => {
       if (user) {
-        createUserDocumentfromAuth(user);
+       await  createUserDocumentfromAuth(user);
       }
-      setCurrentUser(user);
+    setCurrentUser(user);
     });
 
     return unsubscribe;
