@@ -26,9 +26,9 @@ const PaymentForm = () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ amount: totalPrice*100 }),
-  }).then((res) =>  res.json());
+  }).then((res) =>{return res.json()}  );
 
-
+  console.log(response)
   
   const clientSecret = response.paymentIntent.client_secret;
    
