@@ -2,7 +2,7 @@ import React, { useContext,useState } from 'react'
 import { CardElement , useElements,useStripe } from '@stripe/react-stripe-js'
 import AButton from '../UI/Button/Button'
 import { useSelector } from 'react-redux'
-import { UserContext } from '../../context/users.context'
+
 import { getTotal } from '../Cart_List/CartTotal'
 
 const PaymentForm = () => {
@@ -10,7 +10,7 @@ const PaymentForm = () => {
   const elements = useElements();
   const stripe = useStripe();
   const {totalPrice} = getTotal();
-  const {currentUser} = useContext(UserContext)
+
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const paymentHandler = async (event ) => {

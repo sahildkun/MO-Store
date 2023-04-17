@@ -24,8 +24,9 @@ const SignUp = () => {
      try {
       const {user} = await createAuthUserWithEmailAndPassword(email, password);
       console.log(user);
-     
+      
       await createUserDocumentfromAuth(user, { displayName });
+      localStorage.setItem('currentUser', JSON.stringify(user));
       setToaster(true);
       navigate('/')
      }

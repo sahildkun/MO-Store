@@ -5,13 +5,14 @@ import { CartContext } from '../../context/cart.context'
 import { getTotal } from '../Cart_List/CartTotal'
 import { NavLink } from 'react-router-dom'
 import { Badge, Button } from '@mui/material'
-import { signOutUser } from '../../utils/firebase'
+
 import ShoppingCartTwoTone from '@mui/icons-material/ShoppingCartTwoTone'
 import { UserContext } from '../../context/users.context'
 const Navbar = () => {
   const {showSidebar, setShowSidebar} = useContext(CartContext);
-  const {currentUser,setToaster} = useContext(UserContext);
-
+  const {setToaster} = useContext(UserContext);
+  const currentUser = localStorage.getItem('currentUser');
+  console.log(currentUser)
   const handleClick =() => {
     
     setShowSidebar(!showSidebar)
@@ -19,7 +20,9 @@ const Navbar = () => {
   const closeClick = () => {
     setToaster(false)
   }
-
+   const signOutHandler =() => {
+     localStorage.removeItem('currentUser')
+   }
 
   return (
     
@@ -46,7 +49,7 @@ const Navbar = () => {
  
 
     </h1>}
-   {currentUser ? <NavLink onClick={signOutUser} className={'cursor-pointer hover:text-blue-400'}>Sign Out</NavLink> 
+   {currentUser ? <NavLink onClick={signOutHandler} className={'cursor-pointer hover:text-blue-400'}>Sign Out</NavLink> 
    : <NavLink 
     className={({isActive}) => isActive ? 'text-blue-600' : 'hover:text-blue-400'}
     to={'/sign-in'}>Sign In</NavLink>}

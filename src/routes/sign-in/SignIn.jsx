@@ -18,7 +18,8 @@ export default function UserSignUp() {
   const navigate = useNavigate();
 
    const logGoogleUser = async  () => {
-   await  signInWithGoogle();
+   const {user } = await  signInWithGoogle();
+   localStorage.setItem('currentUser', JSON.stringify(user));
    setToaster(true)
    navigate('/')
    }
@@ -69,8 +70,10 @@ export default function UserSignUp() {
    try {
     console.log(userEmail, userName);
 
-    await signInAuthUserWithEmailAndPassword(userEmail,userName)
-   
+    const {user} = await signInAuthUserWithEmailAndPassword(userEmail,userName);
+
+    
+    localStorage.setItem('currentUser', JSON.stringify(user));
     setToaster(true);
     navigate('/')
     setloading(false);

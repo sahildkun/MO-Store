@@ -8,7 +8,7 @@ import Banner from '../../components/Display/Banner'
 import { UserContext } from '../../context/users.context'
 const Home = () => {
   const {showSidebar ,setShowSidebar} = useContext(CartContext);
-  const {toaster ,currentUser} = useContext(UserContext);
+  const {toaster } = useContext(UserContext);
   
   useEffect(() => {
    
