@@ -4,13 +4,26 @@ import AButton from '../UI/Button/Button'
 import { useSelector } from 'react-redux'
 import CircularProgress from '@mui/material/CircularProgress';
 import { getTotal } from '../Cart_List/CartTotal'
+import Navbar from '../navbar/Navbar';
+import { NavLink } from 'react-router-dom';
 
 const PaymentForm = () => {
   const cart = useSelector((state) => state.cart);
   const elements = useElements();
   const stripe = useStripe();
   const {totalPrice} = getTotal();
+  const currentUser = JSON.parse(localStorage.getItem('currentUser')) ;
 
+
+
+  if(currentUser == undefined || null ){
+    return (
+    <>
+  
+     <NavLink to={'/sign-in'} >SIGN IN TO PROCEED</NavLink>
+    </>)
+  }
+ 
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const paymentHandler = async (event ) => {
@@ -25,7 +38,7 @@ const PaymentForm = () => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ amount: 10000}),
+    body: JSON.stringify({ amount: totalPrice}),
   }).then((res) => res.json()  );
 
   console.log(response)
@@ -36,7 +49,7 @@ const PaymentForm = () => {
     payment_method: {
       card: elements.getElement(CardElement),
       billing_details: {
-        name: 'Yihua Zhang',
+        name: 'userName',
       },
     },
   });
@@ -59,7 +72,7 @@ const PaymentForm = () => {
         <AButton type='submit' disabled={cart.length === 0 || isProcessingPayment} background='bg-black text-white' hoverBackground=' hover:bg-white'>
           
           
-          {isProcessingPayment ? <CircularProgress/> : <>Pay Now</> }
+          {isProcessingPayment ? <CircularProgress color='inherit' size={30}/> : <>Pay Now</> }
            </AButton>
         </form>
     </div>

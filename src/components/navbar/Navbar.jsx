@@ -12,7 +12,8 @@ const Navbar = () => {
   const {showSidebar, setShowSidebar} = useContext(CartContext);
   const {setToaster} = useContext(UserContext);
   const currentUser = localStorage.getItem('currentUser');
-  console.log(currentUser)
+  const user = JSON.parse(currentUser);
+  // console.log(user.displayName);
   const handleClick =() => {
     
     setShowSidebar(!showSidebar)

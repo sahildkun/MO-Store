@@ -39,6 +39,18 @@ const  router = createBrowserRouter([
                         element: <IndividualProduct/>,
                         loader: individualProductLoader,
                         
+                    },
+                    {
+                        path:'laptops&computers',
+                        element: <ProductsPage/>,
+                    },
+                    {
+                        path:'mobiles',
+                        element: <ProductsPage/>,
+                    },
+                    {
+                        path:'watches&accessories',
+                        element: <ProductsPage/>,
                     }
                 ]
             },
