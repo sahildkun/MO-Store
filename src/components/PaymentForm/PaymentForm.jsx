@@ -2,7 +2,7 @@ import React, { useContext,useState } from 'react'
 import { CardElement , useElements,useStripe } from '@stripe/react-stripe-js'
 import AButton from '../UI/Button/Button'
 import { useSelector } from 'react-redux'
-
+import CircularProgress from '@mui/material/CircularProgress';
 import { getTotal } from '../Cart_List/CartTotal'
 
 const PaymentForm = () => {
@@ -26,7 +26,7 @@ const PaymentForm = () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ amount: totalPrice*100 }),
-  }).then((res) =>{return res.json()}  );
+  }).then((res) => res.json()  );
 
   console.log(response)
   
@@ -56,7 +56,11 @@ const PaymentForm = () => {
     <div className='h-[300px]flex flex-col items-center justify-center h-screen '>
       <form onSubmit={paymentHandler} action="">
         <CardElement className='p-5 rounded-lg border w-96 bg-white  border-gray-200  '/>
-        <AButton type='submit' disabled={cart.length === 0 || isProcessingPayment} background='bg-black text-white' hoverBackground=' hover:bg-white'>Pay Now </AButton>
+        <AButton type='submit' disabled={cart.length === 0 || isProcessingPayment} background='bg-black text-white' hoverBackground=' hover:bg-white'>
+          
+          
+          {isProcessingPayment ? <CircularProgress/> : <>Pay Now</> }
+           </AButton>
         </form>
     </div>
   )
