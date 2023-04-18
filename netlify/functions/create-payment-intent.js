@@ -1,4 +1,4 @@
-
+require("dotenv").config();
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET)
 
@@ -7,7 +7,7 @@ exports.handler = async (event) => {
 
     try {
         const {amount} = JSON.parse(event.body);
-
+        console.log(amount)
         const paymentIntent = await stripe.paymentIntents.create({
            amount,
            currency: 'inr' ,
@@ -21,8 +21,8 @@ exports.handler = async (event) => {
     }
 
     catch(error) {
-      console.log({error})
-
+      console.log({error},'error')
+ 
       return {
         status: 400,
         body: JSON.stringify({error})
