@@ -21,7 +21,7 @@ const CartTotal = () => {
   return (
     <p className="total__p">
   total ({getTotal().totalQuantity} items) 
-  : <strong>${getTotal().totalPrice}</strong>
+  : <strong>₹ {getTotal().totalPrice}</strong>
 </p>
   )
 }

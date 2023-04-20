@@ -2,6 +2,7 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { useContext } from 'react';
 import { CartContext } from '../../context/cart.context';
+import ReactStars from 'react-stars'
 import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
 import AButton from '../../components/UI/Button/Button';
 import Sidebar from '../../components/sideBar/Sidebar';
@@ -47,7 +48,7 @@ const IndividualProduct = () => {
    
 
    
-    const {id,image,name,description,stock,category,colors,company, price, shipping} = individualProduct;
+    const {id,image,name,description,stock,reviews,stars,category,colors,company, price, shipping} = individualProduct;
     const img = image[0].url;
     console.log(img)
     let colour = colors[0];
@@ -67,13 +68,28 @@ const IndividualProduct = () => {
      </div>
      <div className=' flex flex-col space-y-5'>
       <h1 className='text-5xl text-center' id='rel'>{name.toUpperCase()}</h1>
-      <h1 className='m-5 text-2xl text-center text-black font-bold w-36 mx-auto bg-white' id='company'>₹ {price}</h1>
+      <div className='flex flex-row justify-between items-center'>
+      <h1 className='m-5 text-2xl text-center rounded-md text-black font-bold w-36  bg-white' id='company'>₹ {price}</h1>
+      <div>
+      {!showSidebar &&
+      <div className='flex flex-col '>
+      <ReactStars
+         count={5}
+         value={stars}
+         edit={false}
+         size={30}
+      /><p className='text-xs text-end text-gray-600'>{reviews} reviews...</p>
+      </div>}
+      </div>
+      </div>
       <p className='text-slate-500 m-5 font-light' >{description}</p> 
       {/* <button className='mx-5 bg-green-400 w-[5rem] text-center font-bold py-1 rounded-sm' id='company'>{category.toUpperCase()}</button> */}
       
       <div className='grid grid-cols-2'>
-      <p className='mx-5 font-bold text-lg' id='company'>{company.toUpperCase()}</p> <p className='mx-5 font-light'>Brand warranty for 1 year(T&C)</p>
+      <p className='mx-5 font-bold text-lg' id='company'>{company.toUpperCase()}</p> 
+      <p className='mx-5 font-light'>Brand warranty for 1 year(T&C)</p>
       </div>
+
       {
         shipping ? <div className='mx-5'><LocalShippingTwoToneIcon fontSize='large' color='success'/> </div>:<div className='mx-5 my-2 '><LocalShippingTwoToneIcon fontSize='large' color='error'/>(*not shipping)</div>
       }

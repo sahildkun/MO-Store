@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
 import { useState,useEffect,useContext } from 'react';
-import axios from 'axios';
+
 import Card from '../../components/productCard/product-card';
 import { ProductsContext } from '../../context/products.context';
-import SidebarDisplay from '../../components/sideBar/Sidebardisplay';
+
 import { CartContext } from '../../context/cart.context';
 import Sidebar from '../../components/sideBar/Sidebar';
-import { Await, defer, useLoaderData ,useNavigation} from 'react-router-dom';
 import ErrorPage from '../ErrorPage/Error';
+
 const Products = () => {
 
     // const data = useLoaderData();
@@ -17,8 +17,7 @@ const Products = () => {
     const [products, setProducts] = useContext(ProductsContext);
     //  const products = data;
     const {showSidebar} = useContext(CartContext) 
-    const isLoading = useContext(ProductsContext);
-      // console.log(isLoading);
+
      const [searchfield , setSearchfield] = useState("");
     useEffect(() => {
       // console.log(products)
@@ -41,7 +40,7 @@ const Products = () => {
    
 
     const filteredProducts = products.filter((product) => (product.name.toLocaleLowerCase().includes(searchfield)));
-
+   
 
  
   return (

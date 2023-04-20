@@ -6,11 +6,15 @@ import ProductsPage from './routes/productsPage/ProductsPage'
 import IndividualProduct from './routes/Individual_Product_page/Individual-product-page'
 import UserSignUp from './routes/sign-in/SignIn'
 import SignUp from './routes/sign-up/SignUp'
-import { loader as productsLoder } from './routes/productsPage/ProductsPage'
+
 import { loader as individualProductLoader } from './routes/Individual_Product_page/Individual-product-page'
 import ProductPageLayout from './layouts/ProductPageLayout'
 import ErrorPage from './routes/ErrorPage/Error'
 import CheckoutPage from './routes/checkout/CheckoutPage'
+
+import Mobiles from './routes/productsPage/Mobiles'
+import Wacthes from './routes/productsPage/Wacthes'
+import Laptops from './routes/productsPage/Laptops'
 const  router = createBrowserRouter([  
     {
         path:'/',
@@ -42,15 +46,15 @@ const  router = createBrowserRouter([
                     },
                     {
                         path:'laptops&computers',
-                        element: <ProductsPage/>,
+                        element: <Laptops/>
                     },
                     {
                         path:'mobiles',
-                        element: <ProductsPage/>,
+                        element: <Mobiles/>
                     },
                     {
                         path:'watches&accessories',
-                        element: <ProductsPage/>,
+                        element: <Wacthes/>,
                     }
                 ]
             },
@@ -62,13 +66,14 @@ const  router = createBrowserRouter([
                 path: 'sign-up',
                 element: <SignUp/>
             },
-            {
-                path: 'checkout',
-                element: <CheckoutPage/>
-            }
+           
         ]
         
         
+    },
+    {
+        path: '/checkout',
+        element: <CheckoutPage/>
     }
 ])
 

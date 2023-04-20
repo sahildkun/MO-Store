@@ -16,13 +16,6 @@ const PaymentForm = () => {
 
 
 
-  if(currentUser == undefined || null ){
-    return (
-    <>
-  
-     <NavLink to={'/sign-in'} >SIGN IN TO PROCEED</NavLink>
-    </>)
-  }
  
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
@@ -66,14 +59,20 @@ const PaymentForm = () => {
 }
  
   return (
-    <div className='h-[300px]flex flex-col items-center justify-center h-screen '>
+    <div className='h-[300px]flex flex-col py-10 text-black items-center justify-center h-screen shadow-[-15px_10px_30px_-15px_rgba(0,0,0,0.3)]'>
       <form onSubmit={paymentHandler} action="">
+        <label className='text-5xl p-5' id='rel'>Pay With Card</label>
+        {currentUser ?   <div className='flex flex-col items-center justify-center mt-[10rem]  '>
         <CardElement className='p-5 rounded-lg border w-96 bg-white  border-gray-200  '/>
-        <AButton type='submit' disabled={cart.length === 0 || isProcessingPayment} background='bg-black text-white' hoverBackground=' hover:bg-white'>
+        <AButton type='submit' disabled={cart.length === 0 || isProcessingPayment} background='bg-black text-white rounded w-[24rem]' hoverBackground=' hover:bg-white'>
           
           
           {isProcessingPayment ? <CircularProgress color='inherit' size={30}/> : <>Pay Now</> }
            </AButton>
+           </div>
+          :
+          <NavLink to={'/sign-in'} className={'flex flex-col items-center justify-center mt-[10rem]'}>Sign in first to proceed</NavLink>  
+          }
         </form>
     </div>
   )
