@@ -5,7 +5,7 @@ const Laptops = () => {
 
  
 
-  return <CategoryFilter categoriesToInclude={['laptop', 'computer']}/>
+  return <CategoryFilter category={'laptops & computers'} categoriesToInclude={['laptop', 'computer']}/>
     
    
 

@@ -30,9 +30,11 @@ const Banner = () => {
 
     console.log(featuredProducts);
   return (
-<div className=' border-4 border-white w-fit rounded-md'> 
+  
+  
+<div className=' border-2 border-white w-fit rounded-md'> 
 <Carousel 
-
+  
     autoPlay
     interval={2000}
    infiniteLoop
@@ -62,6 +64,7 @@ const Banner = () => {
          
    </Carousel>
    </div> 
+  
   )
 }
 

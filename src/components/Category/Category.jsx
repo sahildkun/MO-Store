@@ -37,7 +37,7 @@ const CategoryFilter = (props) => {
         <>
         {/* { showSidebar && <SidebarDisplay/>} */}
     
-        LAPTOPS
+         <p className='flex flex-row justify-center text-3xl items-center  text-center' id='rel'>{props.category.toUpperCase()}</p>
         <div  className={`${showSidebar ? 'fixed inset-0 bg-black bg-opacity-50  ' : ''} `} >
         <Sidebar/>
         </div>

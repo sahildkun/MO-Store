@@ -4,7 +4,7 @@ import { incrementQuantity,decrementQuantity,removeItem } from '../../features/c
 const CheckOut = ({id,name,image,price,quantity}) => {
     const dispatch = useDispatch();
     return (
-    <div className='text-black border-2'>
+    <div className='text-black border-2 '>
         <>
     <div key={id} className='flex flex-row  m-2 '>
     <img src={image} className='h-20 w-20 rounded-xl' alt="img" />

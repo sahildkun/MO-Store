@@ -5,15 +5,15 @@ import { useSelector } from 'react-redux'
 import CircularProgress from '@mui/material/CircularProgress';
 import { getTotal } from '../Cart_List/CartTotal'
 import Navbar from '../navbar/Navbar';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Toaster, toast } from 'sonner'
 const PaymentForm = () => {
   const cart = useSelector((state) => state.cart);
   const elements = useElements();
   const stripe = useStripe();
   const {totalPrice} = getTotal();
   const currentUser = JSON.parse(localStorage.getItem('currentUser')) ;
-
+  const navigate = useNavigate();
 
 
  
@@ -50,15 +50,19 @@ const PaymentForm = () => {
   setIsProcessingPayment(false);
 
   if (paymentResult.error) {
-    alert(paymentResult.error.message);
+    toast.error(paymentResult.error.message);
   } else {
     if (paymentResult.paymentIntent.status === 'succeeded') {
-      alert('Payment Successful!');
+     
+      toast.success('Payment Successful!');
+    
     }
   }
 }
  
   return (
+   
+   
     <div className='h-[300px]flex flex-col py-10 text-black items-center justify-center h-screen shadow-[-15px_10px_30px_-15px_rgba(0,0,0,0.3)]'>
       <form onSubmit={paymentHandler} action="">
         <label className='text-5xl p-5' id='rel'>Pay With Card</label>
@@ -67,7 +71,7 @@ const PaymentForm = () => {
         <AButton type='submit' disabled={cart.length === 0 || isProcessingPayment} background='bg-black text-white rounded w-[24rem]' hoverBackground=' hover:bg-white'>
           
           
-          {isProcessingPayment ? <CircularProgress color='inherit' size={30}/> : <>Pay Now</> }
+          {isProcessingPayment ? <p className=' flex items-center justify-center'><CircularProgress size={30} color='inherit'/></p> : <>Pay Now</> }
            </AButton>
            </div>
           :
@@ -75,6 +79,7 @@ const PaymentForm = () => {
           }
         </form>
     </div>
+   
   )
 }
 

@@ -13,7 +13,7 @@ import ErrorPage from './routes/ErrorPage/Error'
 import CheckoutPage from './routes/checkout/CheckoutPage'
 
 import Mobiles from './routes/productsPage/Mobiles'
-import Wacthes from './routes/productsPage/Wacthes'
+import Watches from './routes/productsPage/Wacthes'
 import Laptops from './routes/productsPage/Laptops'
 const  router = createBrowserRouter([  
     {
@@ -54,7 +54,7 @@ const  router = createBrowserRouter([
                     },
                     {
                         path:'watches&accessories',
-                        element: <Wacthes/>,
+                        element: <Watches/>,
                     }
                 ]
             },
