@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { useContext } from 'react';
 import { CartContext } from '../../context/cart.context';
 import ReactStars from 'react-stars'
@@ -12,37 +12,10 @@ import { Toaster, toast } from 'sonner'
 const IndividualProduct = () => {
     const dispatch = useDispatch();
     const  {showSidebar,setShowSidebar}   = useContext(CartContext); 
-  //    const [products,setProducts] = useContext(ProductsContext);
-  //   const { id } = useParams();
-   
-  //  console.log(id);
-  //   useEffect(() => {
-       
-  //   },[products]);
-    
-  //   if(products[0] === undefined || products === ' ') {
-  //       return(  
-  //         <>
-       
-  //         <h1>Loading...</h1>
-  //         </>
-  //       )
-  //   }
-    
-  //   const individualProduct = products.find((product) => product.id === id);
-    
-  //   if(individualProduct === undefined) {
-
-  //     return (  
-  //       <>
-  //       <NotFound/>
-  //       </>
-  //     )
-  //   }
-
+   const navigate = useNavigate()
    const data = useLoaderData();
    const individualProduct = data;
-   console.log(individualProduct);
+  //  console.log(individualProduct);
    
 
    
@@ -107,17 +80,29 @@ const IndividualProduct = () => {
       <AButton  background='bg-transparent' hoverBackground='hover:bg-white ' onClick={() => {
        dispatch(addToCart({
           id,name,price,img
-        }),
+        })),
         toast.success('Added to cart', {
           action: {
             label: 'View Cart',
             onClick: () => setShowSidebar(true)
           },
         })
-       )
+       
 
       }}>Add to Cart</AButton>
-      <AButton background='bg-transparent' hoverBackground='hover:bg-yellow-500 '>BUY NOW</AButton>
+      <AButton background='bg-transparent' hoverBackground='hover:bg-yellow-500 ' 
+      onClick= {() => {
+        dispatch(addToCart({
+          id,name,price,img
+        })),
+        toast('Go to Orders checkout', {
+          action: {
+            label: 'Proceed',
+            onClick: () => navigate('/checkout')
+          },
+        })
+  }}
+      >BUY NOW</AButton>
       </div>
     
      </div>

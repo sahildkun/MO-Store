@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { useState,useEffect,useContext } from 'react';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import Card from '../../components/productCard/product-card';
 import { ProductsContext } from '../../context/products.context';
 
@@ -15,6 +15,7 @@ const Products = () => {
 
     //  console.log(data);
     const [products, setProducts] = useContext(ProductsContext);
+   
     //  const products = data;
     const {showSidebar} = useContext(CartContext) 
 
@@ -26,9 +27,9 @@ const Products = () => {
     if(products === '') {
 
       return (  
-        <>
-        loading...
-        </>
+        <div className='flex  justify-center text-center items-center m-auto h-screen'>
+        <CircularProgress size={70} color='inherit' />
+        </div>
       )
     }
     

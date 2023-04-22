@@ -18,7 +18,7 @@ export const ProductsProvider = ({children}) => {
           setIsLoading(true);
           const { data } = await axios.get(`https://api.pujakaitem.com/api/products`);
           setProducts(data);
-          setIsLoading(false);
+          
          }
        catch (err) {
         setProducts(null);

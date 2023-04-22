@@ -4,10 +4,11 @@ import { ProductsContext } from '../../context/products.context'
 import { CartContext } from '../../context/cart.context'
 import Sidebar from '../sideBar/Sidebar'
 import Card from '../productCard/product-card'
+import { CircularProgress } from '@mui/material'
 import ErrorPage from '../../routes/ErrorPage/Error'
 const CategoryFilter = (props) => {
     const [products, setProducts] = useContext(ProductsContext);
-    //  const products = data;
+    
     const {showSidebar} = useContext(CartContext) 
   
      const [searchfield , setSearchfield] = useState("");
@@ -19,7 +20,9 @@ const CategoryFilter = (props) => {
   
       return (  
         <>
-        loading...
+        <div className='flex  justify-center text-center items-center m-auto h-screen'>
+        <CircularProgress size={70} color='inherit' />
+        </div>
         </>
       )
     }
@@ -35,7 +38,7 @@ const CategoryFilter = (props) => {
   
       return (
         <>
-        {/* { showSidebar && <SidebarDisplay/>} */}
+       
     
          <p className='flex flex-row justify-center text-3xl items-center  text-center' id='rel'>{props.category.toUpperCase()}</p>
         <div  className={`${showSidebar ? 'fixed inset-0 bg-black bg-opacity-50  ' : ''} `} >
