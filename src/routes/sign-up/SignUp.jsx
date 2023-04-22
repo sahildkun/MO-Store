@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { signUpSchema } from '../../schemas'
 const defaultValues = {
   displayName :  '',
-  email :  '',
+  email :  '', 
   password :  '',
   confirmPassword :  '',
 }
