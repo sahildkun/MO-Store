@@ -2,7 +2,7 @@ import React, { useContext,useEffect } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { NavLink } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
-
+import { CircularProgress } from '@mui/material'
 import { ProductsContext } from '../../context/products.context';
 
 
@@ -18,10 +18,9 @@ const Banner = () => {
       if(products === '') {
 
         return (  
-          <>
-          loading ....
-         {/* <Skeleton height='100%' width='750px' color='#525252' animated='true' /> */}
-          </>
+          <div className='flex justify-center items-center '>
+          <CircularProgress color='inherit' size={50}/>
+          </div>
         )
       }
 
