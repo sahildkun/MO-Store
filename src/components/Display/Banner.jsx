@@ -2,7 +2,7 @@ import React, { useContext,useEffect } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { NavLink } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
-import Skeleton from 'react-skeleton-loader';
+
 import { ProductsContext } from '../../context/products.context';
 
 
@@ -19,7 +19,8 @@ const Banner = () => {
 
         return (  
           <>
-         <Skeleton height='100%' width='750px' color='#525252' animated='true' />
+          loading ....
+         {/* <Skeleton height='100%' width='750px' color='#525252' animated='true' /> */}
           </>
         )
       }

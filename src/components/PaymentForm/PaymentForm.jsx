@@ -75,7 +75,7 @@ const PaymentForm = () => {
            </AButton>
            </div>
           :
-          <NavLink to={'/sign-in'} className={'flex flex-col items-center justify-center mt-[10rem]'}>Sign in first to proceed</NavLink>  
+          <NavLink to={'/sign-in'} className={'flex flex-col items-center justify-center mt-[10rem] hover:text-blue-500 hover:underline'}>Sign in first to proceed</NavLink>  
           }
         </form>
     </div>
