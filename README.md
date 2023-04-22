@@ -18,3 +18,7 @@ Once a user is authenticated, their user information and preferences are stored 
 Form validation is applied using Formik and Yup
 
 Thanks for reading and I hope you enjoy checking out Mo Store!
+
+
+https://user-images.githubusercontent.com/105967840/233794967-7915d7d1-67da-491d-afd7-b6c783470558.mp4
+
