@@ -1,4 +1,4 @@
-import { fontWeight } from '@mui/system';
+
 import React, { useEffect } from 'react'
 import { useRef } from 'react';
 import { useContext } from 'react';
@@ -8,7 +8,6 @@ import { CartContext } from '../../context/cart.context';
 import CartTotal from '../Cart_List/CartTotal';
 
 import CartList from '../Cart_List/Cart_List';
-import PaymentForm from '../PaymentForm/PaymentForm';
 import AButton from '../UI/Button/Button';
 const Sidebar = (props) => {
   const {showSidebar,setShowSidebar} = useContext(CartContext);

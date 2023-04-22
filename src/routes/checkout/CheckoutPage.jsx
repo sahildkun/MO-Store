@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import CartList from '../../components/Cart_List/Cart_List';
+
 import CartTotal from '../../components/Cart_List/CartTotal';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
 import { NavLink, useNavigate } from 'react-router-dom';
