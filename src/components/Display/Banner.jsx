@@ -33,7 +33,7 @@ const Banner = () => {
   return (
   
   
-<div className=' border-2 border-white w-fit rounded-md'> 
+<div className=' border-2 border-white w-fit rounded-md '> 
 <Carousel 
   
     autoPlay

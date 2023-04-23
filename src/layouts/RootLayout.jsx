@@ -13,10 +13,11 @@ const RootLayout = () => {
     {navigation.state === 'loading' && <LinearProgress/>}
     <Navbar/>
 
-    <main>
-   
+    
+    <div className='w-auto'>
     <Outlet/>
-    </main>
+    </div>
+
     
     
     </>

@@ -28,10 +28,12 @@ const Home = () => {
     <Sidebar/>
     </div>
     
-    <div  className='grid grid-cols-2 space-x-5 mx-10 my-10'>
+    <div  className='grid   lg:grid-rows-2 items-center  gap-y-5   sm:gap-y-5  xl:grid-cols-2 space-x-10 lg:mx-10 my-10'>
+      <div className='mx-5 sm:mx-auto '>
       <Banner/>
-      <div className='flex flex-col '>
-      <div className='grid grid-cols-2 space-x-5 '>
+      </div>
+      <div className='flex flex-col  ' style={{ margin: '0px', padding:'0px' }}>
+      <div className='grid grid-cols-2  space-x-5 '>
          <div className=' transition-colors duration-700 flex flex-col justify-between  bg-white p-5  text-black h-80 rounded-xl hover:bg-black hover:text-white   border-2 ' id='company'>
           <p className=' text-5xl font-bold max-w-[200px]'> LAPTOPS & COMPUTERS </p>
          <NavLink  to='/products/laptops&computers' className="group flex justify-end  "> 
