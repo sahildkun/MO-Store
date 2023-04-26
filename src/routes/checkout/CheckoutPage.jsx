@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-
+import { useContext } from 'react';
+import { UserContext } from '../../context/users.context';
 import CartTotal from '../../components/Cart_List/CartTotal';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -8,7 +9,8 @@ import WestIcon from '@mui/icons-material/West';
 import CheckOut from '../../components/Checkout_List/CheckOut';
 import { Toaster } from 'sonner';
 const CheckoutPage = () => {
-
+  
+  const { setToaster } = useContext(UserContext);
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ const CheckoutPage = () => {
     <div className='grid grid-cols-2 bg-white max-w-[80rem] m-auto'>
 
   <div className='flex flex-col m-10 ' >
-   <NavLink to={'/'} id='rel' className='text-black'><WestIcon/>Go back to Home</NavLink>
+   <NavLink to={'/'} id='rel' className='text-black' onClick={() => {setToaster(false)}}><WestIcon/>Go back to Home</NavLink>
    <div className='my-10 text-black'>
    <NavLink 
      to={'/'}

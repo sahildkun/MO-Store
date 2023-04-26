@@ -4,12 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import { CircularProgress } from '@mui/material'
 import { ProductsContext } from '../../context/products.context';
+import { CartContext } from '../../context/cart.context';
 
 
 const Banner = () => {
 
     const [products,setProducts] = useContext(ProductsContext);
-    
+    const {showSidebar} = useContext(CartContext)
     useEffect(() => {
         // console.log(products)
       }, [products])
@@ -33,7 +34,7 @@ const Banner = () => {
   return (
   
   
-<div className=' border-2 border-white w-fit rounded-md '> 
+<div className={` ${showSidebar ? 'hidden md:block' : 'visible'} border-2 border-white w-fit rounded-md  `}> 
 <Carousel 
   
     autoPlay
@@ -41,7 +42,7 @@ const Banner = () => {
    infiniteLoop
    showThumbs={false}
    dynamicHeight={1000}
-   width={700}
+   
     showStatus={false}
    >
 

@@ -27,24 +27,26 @@ const Navbar = () => {
 
   return (
     
-    <div className="flex flex-row items-center p-10 font-bold" id='rel'>
+    <div className="  flex flex-row justify-between p-5 md:justify-around items-center md:p-10 font-bold " id='rel'>
     <NavLink 
      to={'/'}
-     className='text-3xl'
+     className=' text-2xl md:text-3xl max-w-2xl'
      onClick={closeClick}
      >
       Mo store
      </NavLink>
-    <div className='invisible md:visible flex flex-auto justify-end space-x-10'>
+
+ 
+    <div className=' flex flex-auto text-xs md:text-lg  justify-end space-x-5 items-center md:space-x-10'>
     <NavLink 
     to={'/products'}
     onClick={closeClick}
     className={({isActive}) => isActive ? 'text-blue-600 ' : 'hover:text-blue-400'}
     >Products
     </NavLink>
-   {!showSidebar && <h1 className='hover:cursor-pointer' onClick={handleClick}>
+   {!showSidebar && <h1 className='hover:cursor-pointer ' onClick={handleClick}>
     <Badge badgeContent={getTotal().totalQuantity} color='primary'>
-    <ShoppingCartTwoTone className='font-bold'/>
+    <ShoppingCartTwoTone className='font-bold' />
     </Badge>
    
  
@@ -55,7 +57,10 @@ const Navbar = () => {
     className={({isActive}) => isActive ? 'text-blue-600' : 'hover:text-blue-400'}
     to={'/sign-in'}>Sign In</NavLink>}
     </div>
-
+  
+    {/* <NavLink className='block text-end md:hidden '>
+      Hamburger
+     </NavLink> */}
   </div>
 
    
