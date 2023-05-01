@@ -51,15 +51,15 @@ const SignUp = () => {
   return (
     <>
     <Toaster richColors position='top-center'/>
-    <div className='grid grid-cols-2 '>
-      <div className='flex flex-auto justify-center my-auto text-xl' >
+    <div className='grid grid-cols-1 justify-center items-center h-screen  md:h-auto md:grid-cols-2 '>
+      <div className='flex flex-auto justify-center mx-10 md:mx-auto my-auto text-xl' >
          <form  className=' flex flex-col gap-3 w-96 items-left ' onSubmit={handleSubmit}>
                   <div className="flex flex-col space-y-1 text-left">
-                    <label htmlFor="name" className="text-xl" id='rel'>
+                    <label htmlFor="name" className="text-sm md:text-xl" id='rel'>
                       Name
                     </label>
                     <input
-                    className='bg-gray-800 w-auto border-2   text-white  p-2 rounded-md'
+                    className='bg-gray-800 w-auto border-2 text-md md:text-lg  text-white p-[2px]  md:p-2 rounded-md'
                       type="name"
                       autoComplete="off"
                       name="displayName"
@@ -72,11 +72,11 @@ const SignUp = () => {
                 <p className='text-sm text-red-600 flex flex-auto'>{errors.displayName && touched.displayName ? (<p>{`*${errors.displayName}`}</p>) : null}</p>
                   </div>
                   <div  className="flex flex-col space-y-1 text-left">
-                    <label htmlFor="email" className="input-label" id='rel'>
+                    <label htmlFor="email" className="text-sm md:text-xl" id='rel'>
                       Email
                     </label>
                     <input
-                     className=' bg-gray-800 w-auto border-2   text-white  p-2 rounded-md'
+                     className=' bg-gray-800 w-auto border-2  text-md md:text-lg text-white p-[2px] md:p-2 rounded-md'
                       type="email"
                       autoComplete="off"
                       name="email"
@@ -89,11 +89,11 @@ const SignUp = () => {
               <p className='text-sm text-red-600 flex flex-auto'>{errors.email && touched.email ? (<p>{`*${errors.email}`}</p>) : null}</p>
                   </div>
                   <div  className="flex flex-col space-y-1 text-left">
-                    <label htmlFor="password" className="input-label">
+                    <label htmlFor="password" className="text-sm md:text-xl">
                       Password
                     </label>
                     <input
-                     className=' bg-gray-800 w-auto border-2   text-white  p-2 rounded-md'
+                     className=' bg-gray-800 w-auto border-2 text-md md:text-lg  text-white p-[1px] md:p-2 rounded-md'
                       type="password"
                       autoComplete="off"
                       name="password"
@@ -106,11 +106,11 @@ const SignUp = () => {
                    <p className='text-sm text-red-600 flex flex-auto'>{errors.password && touched.password ? (<p>{`*${errors.password}`}</p>) : null}</p>
                   </div>
                   <div className="flex flex-col space-y-1 text-left">
-                    <label htmlFor="confirm_password" className="input-label">
+                    <label htmlFor="confirm_password" className="text-sm md:text-xl">
                       Confirm Password
                     </label>
                     <input
-                     className='bg-gray-800 w-auto border-2   text-white  p-2 rounded-md'
+                     className='bg-gray-800 w-auto border-2 text-md md:text-lg  text-white p-[1px] md:p-2 rounded-md'
                       type="password"
                       autoComplete="off"
                       name="confirmPassword"
@@ -132,7 +132,7 @@ const SignUp = () => {
                 </div>
    <div className=''>
 
-<img src={'https://th.bing.com/th/id/OIP.OZIL58JFxpy_rqflQTQCkQHaEK?pid=ImgDet&rs=1'} alt="fd" className=' h-[80vh] px-5 rounded-[3rem] object-fill ' />
+<img src={'https://th.bing.com/th/id/OIP.OZIL58JFxpy_rqflQTQCkQHaEK?pid=ImgDet&rs=1'} alt="fd" className='hidden md:block h-[80vh] px-5 rounded-[3rem] object-fill ' />
 </div>
     </div>
     </>

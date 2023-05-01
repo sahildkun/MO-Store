@@ -107,15 +107,15 @@ export default function UserSignUp() {
   return (
   <>
    <Toaster richColors theme='dark'  position='top-center'/>
-   <div className='grid grid-cols-2'>
-   <div className=' bg-black  shadow-2xl  mx-5 p-10 text-white rounded-lg '>
-    <h1 className=' text-center text-5xl mb-2 ' >Welcome back</h1>
-    <h1 className=' text-center text-xl mb-10 font-extralight' >Please enter your contact details to connect.</h1>
+   <div className='grid grid-cols-1 md:grid-cols-2'>
+   <div className=' bg-black  shadow-2xl   md:mx-5 p-10 text-white rounded-lg '>
+    <h1 className=' text-center text-3xl md:text-5xl mb-2 ' >Welcome back</h1>
+    <h1 className=' text-center text-xs text-slate-500 md:text-xl mb-10 font-extralight' >Please enter your contact details to connect.</h1>
     <Form action="" className='flex flex-col space-y-6 justify-center' onSubmit={submitHandler}>
         
-        <div className='flex flex-col space-y-2 mx-10 '>
+        <div className='flex flex-col space-y-2 mx-2 md:mx-10 '>
           
-         <label htmlFor="name" className='text-xl font-semibold' id='company'>Email address</label>
+         <label htmlFor="name" className='text-sm md:text-xl font-semibold' id='company'>Email address</label>
          <input 
          type="email" 
          placeholder='Please enter your email address' 
@@ -130,8 +130,8 @@ export default function UserSignUp() {
     
          </div>
         
-        <div className='flex flex-col mx-10 space-y-2'>
-         <label htmlFor="password" className='text-xl font-semibold' id='company'>Password</label>
+        <div className='flex flex-col space-y-2 mx-2 md:mx-10'>
+         <label htmlFor="password" className='text-sm md:text-xl font-semibold' id='company'>Password</label>
          <input 
          type="password" 
          placeholder='Please enter your name' 
@@ -144,7 +144,7 @@ export default function UserSignUp() {
          {nameInputInValid  &&  <p className='text-sm text-red-600 '>Password is invalid*</p>}
          </div>
 
-         <div className='flex flex-col space-y-5 mx-auto'>
+         <div className='flex flex-col space-y-5 mx-auto  '>
          <button 
          type='submit' 
          disabled={loading}
@@ -160,14 +160,14 @@ export default function UserSignUp() {
           <img src={google} alt="" className='h-5 w-5'/>
           <p>Log in with Google</p> 
           </button>
-         <p>Don’t have an account ? <NavLink to={'/sign-up'} className={'underline'}>Sign up here</NavLink></p>
+         <p className='text-xs md:text-lg'>Don’t have an account ? <NavLink to={'/sign-up'} className={'underline'}>Sign up here</NavLink></p>
          </div>
     </Form>
    </div>
 
    <div className=''>
 
-    <img src={img} alt="fd" className=' h-[80vh] px-5 rounded-[3rem] object-fill ' />
+    <img src={img} alt="fd" className='hidden md:block h-[80vh] px-5 rounded-[3rem] object-fill ' />
    </div>
    
    </div>
